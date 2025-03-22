@@ -28,7 +28,8 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     public Produto atualizar(Long id, ProdutoDTO dto) {
-        Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+        Produto produto = produtoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         produto.setNome(dto.getNome());
         produto.setDescricao(dto.getDescricao());
         produto.setPreco(dto.getPreco());
@@ -38,5 +39,11 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Override
     public void deletar(Long id) {
         produtoRepository.deleteById(id);
+    }
+
+    @Override
+    public Produto buscarPorId(Long id) {
+        return produtoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
     }
 }

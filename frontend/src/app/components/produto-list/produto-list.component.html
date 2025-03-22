@@ -1,0 +1,39 @@
+<div class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-2">
+      <i class="fas fa-boxes"></i> Lista de Produtos
+    </h2>
+    <button (click)="novo()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">
+      <i class="fas fa-plus mr-2"></i> Novo Produto
+    </button>
+  </div>
+
+  <table class="w-full table-auto border-collapse">
+    <thead>
+      <tr class="bg-gray-100 text-left text-gray-700 uppercase text-sm">
+        <th class="px-4 py-2 border">ID</th>
+        <th class="px-4 py-2 border">Nome</th>
+        <th class="px-4 py-2 border">Descrição</th>
+        <th class="px-4 py-2 border">Preço</th>
+        <th class="px-4 py-2 border text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos" class="hover:bg-gray-50 transition">
+        <td class="px-4 py-2 border">{{ produto.id }}</td>
+        <td class="px-4 py-2 border">{{ produto.nome }}</td>
+        <td class="px-4 py-2 border">{{ produto.descricao }}</td>
+        <td class="px-4 py-2 border">R$ {{ produto.preco | number:'1.2-2' }}</td>
+        <td class="px-4 py-2 border text-center space-x-2">
+          <button (click)="editar(produto.id!)"
+            class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-md">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+          <button (click)="excluir(produto.id!)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md">
+            <i class="fas fa-trash"></i> Excluir
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -10,4 +10,5 @@ public interface ProdutoService {
     List<Produto> listarTodos();
     Produto atualizar(Long id, ProdutoDTO dto);
     void deletar(Long id);
+    Produto buscarPorId(Long id);
 }
